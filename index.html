@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Verificación de Competencias - Innovacap</title>
+    <title>Sistema de Verificación de Competencias - Vástago Capacitaciones</title>
     
-    <!-- Fuentes elegantes y profesionales -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
     
-    <!-- Iconografía oficial -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -42,7 +40,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 12px; /* Reducido para dar más espacio en móviles */
         }
 
         /* Contenedor del Buscador / Validador */
@@ -50,32 +48,32 @@
             background: var(--blanco);
             width: 100%;
             max-width: 550px;
-            padding: 35px;
+            padding: 25px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
             text-align: center;
             border-top: 5px solid var(--azul-innovacap);
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
+            margin-bottom: 20px;
         }
 
         .logo-busqueda {
-            max-height: 70px;
+            max-height: 60px;
+            max-width: 100%;
             margin-bottom: 20px;
             object-fit: contain;
         }
 
         .search-wrapper h1 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--azul-institucional);
             margin-bottom: 8px;
             font-weight: 700;
         }
 
         .search-wrapper p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #64748B;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .input-group {
@@ -102,7 +100,6 @@
             font-weight: 600;
             color: var(--azul-institucional);
             outline: none;
-            transition: border-color 0.2s;
         }
 
         .input-group input:focus {
@@ -123,11 +120,6 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: background-color 0.2s;
-        }
-
-        .btn-verificar:hover {
-            background-color: #1D4ED8;
         }
 
         /* Contenedor del Resultado del Certificado */
@@ -138,14 +130,13 @@
             max-width: 850px;
             border-radius: 12px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            padding: 50px;
+            padding: 24px; /* Ajustado dinámicamente para móviles */
             position: relative;
             border: 2px solid #E2E8F0;
             overflow: hidden;
             animation: fadeInUp 0.5s ease forwards;
         }
 
-        /* AJUSTE: Imagen de fondo exactamente como es (sin marca de agua / opacidad 1) */
         .certificate-container::before {
             content: "";
             position: absolute;
@@ -157,7 +148,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 1; /* Eliminada la marca de agua, queda original */
+            opacity: 1; 
             z-index: 1;
             pointer-events: none;
         }
@@ -167,13 +158,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Marco de Doble Línea con fondo ligeramente blanqueado para mantener la lectura limpia */
+        /* Marco de Doble Línea */
         .certificate-border-inner {
             border: 4px double #CBD5E1;
-            padding: 30px;
+            padding: 20px;
             position: relative;
             z-index: 2;
-            background-color: rgba(255, 255, 255, 0.75); /* Capa protectora para leer bien */
+            background-color: rgba(255, 255, 255, 0.82); 
             backdrop-filter: blur(4px);
             border-radius: 6px;
         }
@@ -182,54 +173,60 @@
         .badge-verificado {
             position: absolute;
             top: -15px;
-            right: 20px;
+            right: 10px;
             background-color: var(--verde-suave);
             color: var(--verde-exito);
             border: 1px solid var(--verde-exito);
-            padding: 6px 14px;
-            font-size: 0.75rem;
+            padding: 5px 10px;
+            font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             border-radius: 20px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             z-index: 10;
         }
 
         /* Encabezado del Certificado */
         .cert-header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Apilado por defecto para pantallas chicas */
+            gap: 15px;
             align-items: center;
+            text-align: center;
             border-bottom: 2px solid rgba(226, 232, 240, 0.8);
-            padding-bottom: 20px;
-            margin-bottom: 35px;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
 
         .logo-group {
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap; /* Evita que los logos se aplasten */
         }
 
         .cert-logo {
-            max-height: 60px;
+            max-height: 45px;
+            max-width: 110px;
             object-fit: contain;
         }
 
         .cert-logo-sence {
-            max-height: 52px;
+            max-height: 40px;
+            max-width: 100px;
             object-fit: contain;
         }
 
         .cert-meta-header {
-            text-align: right;
+            text-align: center;
         }
 
         .cert-meta-header p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--azul-institucional);
             font-weight: 600;
             line-height: 1.4;
@@ -248,18 +245,18 @@
 
         .cert-body h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--azul-institucional);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-style: italic;
         }
 
         .cert-body .constancia-texto {
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.6;
             color: var(--azul-institucional);
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             font-weight: 500;
         }
 
@@ -271,23 +268,23 @@
         /* Grilla de Competencias */
         .cargos-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: 1fr; /* Una columna en celulares */
+            gap: 15px;
             max-width: 760px;
             margin: 0 auto 15px;
         }
 
         .cargo-card {
-            background: rgba(255, 255, 255, 0.92); /* Más sólido para que resalte sobre el fondo brillante */
+            background: rgba(255, 255, 255, 0.95); 
             border-left: 5px solid var(--azul-innovacap);
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 12px;
+            gap: 10px;
             text-align: left;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
 
         .cargo-card.alimentos {
@@ -297,16 +294,16 @@
         .cargo-top-row {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             width: 100%;
         }
 
         .cargo-icon {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--azul-innovacap);
             background: #EFF6FF;
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -320,14 +317,14 @@
         }
 
         .cargo-info h3 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: var(--azul-institucional);
             margin-bottom: 2px;
         }
 
         .cargo-info p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--verde-exito);
             font-weight: 700;
             display: flex;
@@ -336,28 +333,26 @@
         }
 
         .cargo-descripcion {
-            font-size: 0.8rem;
-            line-height: 1.5;
+            font-size: 0.78rem;
+            line-height: 1.4;
             color: #334155;
             font-weight: 600;
-            margin-top: 4px;
         }
 
-        /* Bloque de Vigencia Legal Resaltada */
+        /* Bloque de Vigencia */
         .cargo-vigencia-block {
             width: 100%;
             margin-top: auto;
-            padding-top: 12px;
+            padding-top: 10px;
             border-top: 1px dashed #CBD5E1;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         .vigencia-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             color: #475569;
             font-weight: 700;
         }
@@ -365,114 +360,101 @@
         .vigencia-fecha-badge {
             background-color: var(--rojo-vigencia);
             color: var(--blanco);
-            padding: 6px 12px;
-            font-size: 0.8rem;
+            padding: 5px 10px;
+            font-size: 0.75rem;
             font-weight: 700;
             border-radius: 6px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 3px 8px rgba(220, 38, 38, 0.3);
+            gap: 4px;
             align-self: flex-start;
         }
 
-        /* Pie del Certificado con Sellos y Firmas */
+        /* Pie del Certificado Responsivo */
         .cert-footer {
             border-top: 1px solid rgba(226, 232, 240, 0.8);
-            padding-top: 30px;
+            padding-top: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Apilado ordenadamente en móvil */
+            gap: 25px;
             align-items: center;
+            text-align: center;
         }
 
         .footer-sello {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            font-size: 0.75rem;
+            gap: 8px;
+            font-size: 0.7rem;
             color: var(--azul-institucional);
             font-weight: 600;
             position: relative;
-            min-width: 260px;
-            min-height: 110px;
+            width: 100%;
         }
 
         .footer-sello i {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--azul-innovacap);
-            position: relative;
             z-index: 4;
         }
 
         .footer-sello div {
-            position: relative;
             z-index: 4;
         }
 
-        /* Marca de agua interna del Sello de Aprobado */
+        /* Sello marca de agua rediseñado para no estorbar en móviles */
         .img-sello-dorado {
             position: absolute;
-            left: 45%;
+            left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            max-height: 220px;
+            max-height: 140px;
             width: auto;
             object-fit: contain;
             z-index: 3;
             mix-blend-mode: multiply;
-            opacity: 0.25;
+            opacity: 0.18;
             pointer-events: none;
         }
 
-        /* Contenedor de firma */
+        /* Firma Caligráfica Ajustada */
         .footer-firma {
             text-align: center;
-            min-width: 280px;
-            height: 120px; 
+            width: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
             align-items: center;
             position: relative;
+            padding-top: 45px; /* Espacio para que la firma flote de fondo limpia */
         }
 
         .img-firma {
             position: absolute;
-            bottom: 25px; 
-            max-height: 115px; 
+            top: -10px; 
+            max-height: 70px; /* Reducida para pantallas móviles */
             width: auto;
             object-fit: contain;
             z-index: 4; 
             mix-blend-mode: multiply; 
             opacity: 0.95; 
-            pointer-events: none;
         }
 
         .linea-firma {
             border-bottom: 1px solid #94A3B8;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             width: 100%;
+            max-width: 280px; /* Limita la línea para mantener estética */
             position: relative;
             z-index: 3; 
         }
 
-        .footer-firma p {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--azul-institucional);
-            position: relative;
-            z-index: 5; 
-            background-color: rgba(255, 255, 255, 0.95); 
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
         .footer-firma span {
-            font-size: 0.65rem;
+            font-size: 0.58rem;
             color: #475569;
             display: block;
-            position: relative;
-            z-index: 5;
+            line-height: 1.3;
+            max-width: 290px;
         }
 
         /* Alertas de error en búsqueda */
@@ -483,27 +465,57 @@
             border: 1px solid #FCA5A5;
             padding: 12px;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 20px;
         }
 
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .certificate-container { padding: 20px; }
-            .certificate-border-inner { padding: 15px; }
-            .cargos-container { grid-template-columns: 1fr; }
-            .cert-header { flex-direction: column; gap: 20px; text-align: center; }
-            .logo-group { justify-content: center; }
-            .cert-meta-header { text-align: center; }
-            .cert-footer { flex-direction: column; gap: 35px; text-align: center; }
-            .footer-sello { justify-content: center; }
+        /* =======================================================
+           MEDIA QUERIES: Optimización para Tablets y Computadores 
+           ======================================================= */
+        @media (min-width: 768px) {
+            body { padding: 20px; }
+            .certificate-container { padding: 45px; }
+            .certificate-border-inner { padding: 30px; }
+            
+            .cert-header { 
+                flex-direction: row; 
+                justify-content: space-between; 
+                text-align: left; 
+            }
+            .cert-meta-header { text-align: right; }
+            .cert-meta-header p { font-size: 0.75rem; }
+            
+            .cert-body h2 { font-size: 1.9rem; }
+            .cargos-container { grid-template-columns: 1fr 1fr; } /* Regresa a dos columnas */
+
+            .cert-footer { 
+                flex-direction: row; 
+                justify-content: space-between; 
+                text-align: left;
+                align-items: flex-end;
+            }
+            
+            .footer-sello { 
+                flex-direction: row; 
+                align-items: center; 
+                width: auto;
+            }
+            .img-sello-dorado { left: 40%; max-height: 180px; }
+
+            .footer-firma { 
+                width: auto; 
+                align-items: center; 
+                padding-top: 35px;
+            }
+            .img-firma { max-height: 95px; top: -30px; }
+            .linea-firma { width: 280px; }
+            .footer-firma span { font-size: 0.62rem; max-width: 320px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BLOQUE 1: BUSCADOR SIMULADO -->
     <div class="search-wrapper" id="buscador">
         <img class="logo-busqueda" src="https://vastagocapacitaciones.cl/wp-content/uploads/2022/12/Recurso-1.png" alt="Logo Innovacap">
         <h1>Consulta de Registros Oficiales</h1>
@@ -519,21 +531,18 @@
         </div>
 
         <button class="btn-verificar" onclick="validarRut()">
-            <i class="fa-solid fa-shield-check"></i> Verificar Certificado
+            <i class="fa-solid fa-shield-halved"></i> Verificar Certificado
         </button>
     </div>
 
 
-    <!-- BLOQUE 2: VISTA DEL CERTIFICADO (Con imagen original al 100% de fondo) -->
     <div class="certificate-container" id="certificado">
         <div class="certificate-border-inner">
             
-            <!-- Sello Oficial Verificado superior -->
             <div class="badge-verificado">
                 <i class="fa-solid fa-circle-check"></i> Documento Auténtico
             </div>
 
-            <!-- Encabezado corporativo con ambos logos al costado -->
             <header class="cert-header">
                 <div class="logo-group">
                     <img class="cert-logo" src="https://vastagocapacitaciones.cl/wp-content/uploads/2022/12/Recurso-1.png" alt="Logo Innovacap">
@@ -542,11 +551,10 @@
                 <div class="cert-meta-header">
                     <p>Código Verificador: <strong>INV-2026-9984</strong></p>
                     <p>Registro Nacional SENCE: <strong>Activo</strong></p>
-                    <p>Institución: <strong>Innovacap Capacitaciones</strong></p>
+                    <p>Institución: <strong>Vástago Capacitaciones</strong></p>
                 </div>
             </header>
 
-            <!-- Cuerpo Central -->
             <div class="cert-body">
                 <h2>Constancia de Capacitación Oficial</h2>
                 
@@ -554,10 +562,8 @@
                     El Sr./Sra. <strong>LEIDY YESENIA CRUZ PATIÑO</strong>, cédula nacional de identidad N° <strong>28.913.794-7</strong>, cuenta con las siguientes certificaciones:
                 </p>
 
-                <!-- Tarjetas Didácticas de Competencias Habilitadas -->
                 <div class="cargos-container">
                     
-                    <!-- Cargo 1: Auxiliar de Aseo -->
                     <div class="cargo-card">
                         <div class="cargo-top-row">
                             <div class="cargo-icon">
@@ -565,28 +571,6 @@
                             </div>
                             <div class="cargo-info">
                                 <h3>Auxiliar de Aseo</h3>
-                                <p><i class="fa-solid fa-circle-check"></i> Calificado / Aprobado</p>
-                            </div>
-                        </div>
-                        <div class="cargo-descripcion">
-                            Habilitada bajo las normas técnicas correspondientes de higiene y seguridad agroalimentaria, garantizando las buenas prácticas profesionales para asegurar la inocuidad de los alimentos y cuidar la salud colectiva.
-                        </div>
-                        <div class="cargo-vigencia-block">
-                            <span class="vigencia-label">Período de Vigencia Legal</span>
-                            <div class="vigencia-fecha-badge">
-                                <i class="fa-solid fa-hourglass-half"></i> 31 de Mayo de 2030
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cargo 2: Manipulación de Alimentos -->
-                    <div class="cargo-card alimentos">
-                        <div class="cargo-top-row">
-                            <div class="cargo-icon">
-                                <i class="fa-solid fa-utensils"></i>
-                            </div>
-                            <div class="cargo-info">
-                                <h3>Manipulación de Alimentos</h3>
                                 <p><i class="fa-solid fa-circle-check"></i> Calificado / Aprobado</p>
                             </div>
                         </div>
@@ -601,13 +585,32 @@
                         </div>
                     </div>
 
+                    <div class="cargo-card alimentos">
+                        <div class="cargo-top-row">
+                            <div class="cargo-icon">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <div class="cargo-info">
+                                <h3>Manipulación de Alimentos</h3>
+                                <p><i class="fa-solid fa-circle-check"></i> Calificado / Aprobado</p>
+                            </div>
+                        </div>
+                        <div class="cargo-descripcion">
+                            Habilitada bajo las normas técnicas correspondientes de higiene y seguridad agroalimentaria, garantizando las buenas prácticas profesionales para asegurar la inocuidad de los alimentos y cuidar la salud colectiva.
+                        </div>
+                        <div class="cargo-vigencia-block">
+                            <span class="vigencia-label">Período de Vigencia Legal</span>
+                            <div class="vigencia-fecha-badge">
+                                <i class="fa-solid fa-hourglass-half"></i> 31 de Mayo de 2030
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- Pie de Certificado -->
             <footer class="cert-footer">
                 
-                <!-- Sección Izquierda: Organismo Técnico con la Marca de Agua de Fondo -->
                 <div class="footer-sello">
                     <img class="img-sello-dorado" src="https://thumbs.dreamstime.com/b/sello-aprobado-vector-aislado-en-blanco-29840749.jpg?w=768" alt="Sello Aprobado Marca de Agua">
                     
@@ -618,7 +621,6 @@
                     </div>
                 </div>
 
-                <!-- Bloque de Firma por encima de la línea -->
                 <div class="footer-firma">
                     <img class="img-firma" src="https://www.nicepng.com/png/full/358-3588706_firma-png-sin-fondo.png" alt="Firma Caligráfica">
                     <div class="linea-firma"></div>
@@ -630,19 +632,21 @@
         </div>
     </div>
 
-    <!-- Lógica Interactiva Privada -->
     <script>
         function validarRut() {
             const input = document.getElementById('rutInput').value.trim();
             const certificado = document.getElementById('certificado');
             const errorBox = document.getElementById('errorBox');
 
-            const rutLimpio = input.replace(/\./g, '').replace(/-/g, '');
+            const rutLimpio = input.replace(/\./g, '').replace(/-/g, '').toLowerCase();
 
             if (rutLimpio === '289137947') {
                 errorBox.style.display = 'none';
                 certificado.style.display = 'block';
-                certificado.scrollIntoView({ behavior: 'smooth' });
+                // Delay sutil para esperar que el display pase a block antes de scrollear
+                setTimeout(() => {
+                    certificado.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
             } else {
                 certificado.style.display = 'none';
                 errorBox.style.display = 'block';
